@@ -6,11 +6,9 @@ const jwt = require("jsonwebtoken");
 
 const validateSignUp= [
     body("first_name").trim()
-      .escape()
       .isAlpha().withMessage(`First name can only be letters`)
       .isLength({ min: 1, max: 15 }).withMessage(`First name must be between 1 and 15 characters.`),
     body("last_name").trim()
-        .escape()
         .isAlpha().withMessage(`Last name can only be letters`)
         .isLength({ min: 1, max: 15 }).withMessage(`Last name must be between 1 and 15 characters.`),
     body("username")
@@ -27,7 +25,6 @@ const validateSignUp= [
     body('passwordConfirm').custom((value, { req }) => {
           return value === req.body.password;
       }).withMessage(`Passwords must match.`),
-    body("author").isBoolean().withMessage(`Response must be true or false`),
 ];
 const validateLogIn= [
   body("username")
@@ -43,27 +40,19 @@ const validateLogIn= [
 newUserCreate = [
     validateSignUp,
     async function(req, res) {
-        let {first_name,last_name,username,password,passwordConfirm,author} = req.body
+        let {first_name,last_name,username,password,passwordConfirm} = req.body
         bcrypt.hash(password, 10, async (err, hashedPassword) => {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(400).json({
-                    errors: errors.array(),
-                    body: req.body
-                    
+                    errors: errors.array(),                    
                 });
             }
-            if(author == "true"){
-              author = true;
-            }else{
-              author = false;
-            }
-            await db.createUser(tools.capitalize(first_name),tools.capitalize(last_name),username,hashedPassword,author);
+            await db.createUser(tools.capitalize(first_name),tools.capitalize(last_name),username,hashedPassword);
             res.sendStatus(200);
         });
     }
 ]
-
 logIn = [
   validateLogIn,
   async function(req, res) {
@@ -81,8 +70,8 @@ logIn = [
         
       }
       else{
-        jwt.sign({user},'lemons',(err,token)=>{
-          //save token to  local storage - todo
+        jwt.sign({user},process.env.SECRET,(err,token)=>{
+          //return token and user info
           res.json({
               token,user
           });

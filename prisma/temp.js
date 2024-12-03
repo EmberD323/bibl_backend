@@ -4,8 +4,37 @@ const prisma = new PrismaClient()
 
 async function main() {
 
-    const posts =await prisma.post.findMany()
-    console.log(posts)
+   
+    // await prisma.book.deleteMany({
+    
+    // })
+    //  const lists =await prisma.list.findMany({
+    //   include: {
+    //     books:true
+    // },
+    // })
+    // console.log(lists)
+    // const booklists =await prisma.booksOnLists.findMany({
+    //   include: {
+    //     book:true,
+    //     list:true
+    // },
+    // })
+    // console.log(booklists)
+
+    const list = await prisma.list.findUnique({
+      include: {
+          books:{
+            include:{
+              book:true
+            }
+          }
+      },
+      where: {
+        id:1
+      },
+  })
+  console.log(list.books[0])
 }
 
 
