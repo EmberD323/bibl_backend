@@ -51,7 +51,7 @@ newUserCreate = [
             await db.createUser(tools.capitalize(first_name),tools.capitalize(last_name),username,hashedPassword);
             res.sendStatus(200);
             //create base lists
-            const user = db.findUserByUsername(username);
+            const user = await db.findUserByUsername(username);
             
             await db.createList("To be read",user.id);
             await db.createList("Currently reading",user.id);

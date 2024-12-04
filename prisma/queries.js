@@ -25,7 +25,6 @@ async function createUser(first_name,last_name,username,password) {
     return 
 }
 
-db.getUserId(username);
 
 async function findListByName(name,userId) {
     const list = await prisma.list.findMany({

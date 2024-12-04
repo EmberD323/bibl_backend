@@ -5,27 +5,27 @@ const prisma = new PrismaClient()
 async function main() {
 
    
-    await prisma.user.deleteMany({
+    // await prisma.user.deleteMany({
     
-    })
+    // })
     //  const lists =await prisma.list.findMany({
     //   include: {
     //     books:true
     // },
     // })
     // console.log(lists)
-    const booklists =await prisma.list.findMany({
+    // const booklists =await prisma.list.findMany({
       
-    })
-    console.log(booklists)
+    // })
+    // console.log(booklists)
 
     
-  // const users =await prisma.user.findMany({
-  //     include: {
-  //       lists:true
-  //   },
-  //   })
-  //   console.log(users)
+  const users =await prisma.user.findMany({
+      include: {
+        lists:true
+    },
+    })
+    console.log(users)
 }
 
 
