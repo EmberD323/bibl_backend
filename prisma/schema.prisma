@@ -30,7 +30,9 @@ model Book {
 
 model List {
   id          Int      @id @default(autoincrement())
-  name        String     
+  name        String
+  added       DateTime @default(now())
+     
   user        User   @relation(fields: [userId], references: [id])
   userId      Int    
   books BooksOnLists[]

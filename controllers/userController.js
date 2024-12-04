@@ -50,6 +50,12 @@ newUserCreate = [
             }
             await db.createUser(tools.capitalize(first_name),tools.capitalize(last_name),username,hashedPassword);
             res.sendStatus(200);
+            //create base lists
+            await db.createList("To be read",userid);
+            await db.createList("Currently reading",userid);
+            await db.createList("Read",userid);
+
+
         });
     }
 ]
