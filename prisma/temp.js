@@ -5,9 +5,12 @@ const prisma = new PrismaClient()
 async function main() {
 
    
-    // await prisma.user.deleteMany({
+  // await prisma.list.deleteMany({
     
-    // })
+  // })  
+  // await prisma.user.deleteMany({
+    
+  //   })
     //  const lists =await prisma.list.findMany({
     //   include: {
     //     books:true
@@ -20,12 +23,12 @@ async function main() {
     // console.log(booklists)
 
     
-  const users =await prisma.user.findMany({
-      include: {
-        lists:true
-    },
-    })
-    console.log(users)
+  // const users =await prisma.user.findMany({
+  //     include: {
+  //       lists:true
+  //   },
+  //   })
+  //   console.log(users)
 }
 
 
