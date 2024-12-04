@@ -22,19 +22,19 @@ async function main() {
     // })
     // console.log(booklists)
 
-    const list = await prisma.list.findUnique({
-      include: {
-          books:{
-            include:{
-              book:true
-            }
-          }
-      },
-      where: {
-        id:1
-      },
-  })
-  console.log(list.books[0])
+  //   const list = await prisma.list.findUnique({
+  //     include: {
+  //         books:{
+  //           include:{
+  //             book:true
+  //           }
+  //         }
+  //     },
+  //     where: {
+  //       id:1
+  //     },
+  // })
+  // console.log(list.books[0])
 }
 
 
