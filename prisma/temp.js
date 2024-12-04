@@ -14,33 +14,18 @@ async function main() {
     // },
     // })
     // console.log(lists)
-    // const booklists =await prisma.booksOnLists.findMany({
-    //   include: {
-    //     book:true,
-    //     lists:true
-    // },
-    // })
-    // console.log(booklists)
-
-  //   const list = await prisma.list.findUnique({
-  //     include: {
-  //         books:{
-  //           include:{
-  //             book:true
-  //           }
-  //         }
-  //     },
-  //     where: {
-  //       id:1
-  //     },
-  // })
-  // console.log(list.books[0])
-  const users =await prisma.user.findMany({
-      include: {
-        lists:true
-    },
+    const booklists =await prisma.list.findMany({
+      
     })
-    console.log(users)
+    console.log(booklists)
+
+    
+  // const users =await prisma.user.findMany({
+  //     include: {
+  //       lists:true
+  //   },
+  //   })
+  //   console.log(users)
 }
 
 
