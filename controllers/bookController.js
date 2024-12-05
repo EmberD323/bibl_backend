@@ -67,7 +67,7 @@ async function listAddBook (req, res) {
         }else{
             const listId = Number(req.params.listId);
             let {title,name,imageURL,category,description,pageCount,publishDate} = req.body;
-            await db.addBook(listId,title,name,imageURL,category,description,pageCount,publishDate);
+            await db.addBook(listId,title,name,imageURL,category,description,Number(pageCount),publishDate);
             res.sendStatus(200)
         }   
     })
