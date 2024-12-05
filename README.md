@@ -5,7 +5,7 @@ supertest --save-dev
 
 run app
 1)create .env with database url
-2) npx  prisma migrate dev --name init
+2) npx prisma migrate dev --name init
 3) node --watch app.js
 
 psql

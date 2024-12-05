@@ -76,13 +76,13 @@ async function findList(listId) {
     })
     return list
 }
-async function addBook(listId,title,firstName,lastName) {
+async function addBook(listId,title,name,imageURL,averageRating,category,description,pageCount,publishDate) {
+    console.log(listId,title,name,imageURL,averageRating,category,description,pageCount,publishDate);
     //check if book exists
     const book = await prisma.book.findMany({
         where: {
             title: title,
-            author_first_name:firstName,
-            author_last_name:lastName
+            author_name:name,
         },
     })
     let bookId;
@@ -91,8 +91,13 @@ async function addBook(listId,title,firstName,lastName) {
         const newBook = await prisma.book.createManyAndReturn({
             data: {
                title,
-               author_first_name:firstName,
-               author_last_name:lastName
+               author_name:name,
+               imageURL,
+               averageRating,
+               category,
+               description,
+               pageCount,
+               publishDate
             }})
 
         bookId = newBook[0].id;
@@ -167,5 +172,6 @@ module.exports = {
     findList,
     addBook,
     deleteList,
-    deleteAllBooksFromList
+    deleteAllBooksFromList,
+    deleteBook
 }

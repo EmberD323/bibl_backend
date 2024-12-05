@@ -21,18 +21,21 @@ model User {
   lists       List[]
 }
 model Book {
-  id          Int      @id @default(autoincrement())
-  title       String
-  author_first_name  String
-  author_last_name   String
-  lists BooksOnLists[]
+  id            Int      @id @default(autoincrement())
+  title         String
+  author_name   String
+  imageURL      String
+  averageRating Int
+  category      String
+  description   String
+  pageCount     Int
+  publishDate   Int
+  lists         BooksOnLists[]
 }
 
 model List {
   id          Int      @id @default(autoincrement())
   name        String
-  
-     
   user        User   @relation(fields: [userId], references: [id])
   userId      Int    
   books BooksOnLists[]
