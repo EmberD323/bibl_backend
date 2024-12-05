@@ -28,7 +28,7 @@ model Book {
   category      String
   description   String
   pageCount     Int
-  publishDate   Int
+  publishDate   String
   lists         BooksOnLists[]
 }
 
