@@ -137,6 +137,32 @@ async function addBook(listId,title,name,imageURL,category,description,pageCount
     
     return 
 }
+async function addBookNoList(title,name,imageURL,category,description,pageCount,publishDate) {
+    console.log(title,name,imageURL,category,description,pageCount,publishDate);
+    //check if book exists
+    const book = await prisma.book.findMany({
+        where: {
+            title: title,
+            author_name:name,
+        },
+    })
+    //if it doesnt create book
+    if (book[0] == undefined){
+        await prisma.book.create({
+            data: {
+               title,
+               author_name:name,
+               imageURL,
+               averageRating,
+               category,
+               description,
+               pageCount,
+               publishDate
+        }})
+    }
+    
+    return 
+}
 async function deleteBook(listId,bookId) {
     await prisma.booksOnLists.delete({
         where: {
@@ -171,6 +197,7 @@ module.exports = {
     findLists,
     findList,
     addBook,
+    addBookNoList,
     deleteList,
     deleteAllBooksFromList,
     deleteBook

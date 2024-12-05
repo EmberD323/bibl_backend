@@ -72,6 +72,17 @@ async function listAddBook (req, res) {
         }   
     })
 }
+async function addBook (req, res) {
+    jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
+        if(err){
+            res.sendStatus(403)
+        }else{
+            let {title,name,imageURL,category,description,pageCount,publishDate} = req.body;
+            await db.addBookNoList(title,name,imageURL,category,description,Number(pageCount),publishDate);
+            res.sendStatus(200)
+        }   
+    })
+}
 async function listDeleteBook (req, res) {
     jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
         if(err){
@@ -114,7 +125,8 @@ module.exports = {
     getList,
     listAddBook,
     listDeleteBook,
-    deleteList
+    deleteList,
+    addBook
 
   
 };
