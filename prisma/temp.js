@@ -21,18 +21,18 @@ async function main() {
       
     // })
     // console.log(booklists)
-  // const lists =await prisma.list.findMany({
-  //     include: {
-  //       books:true
-  //   },
-  //   })
-  //   console.log(lists)
-    const books =await prisma.book.findMany({
+  const lists =await prisma.list.findMany({
       include: {
-        lists:true
+        books:true
     },
     })
-    console.log(books)
+    console.log(lists)
+    // const books =await prisma.book.findMany({
+    //   include: {
+    //     lists:true
+    // },
+    // })
+    // console.log(books)
     
   // const users =await prisma.user.findMany({
   //     include: {

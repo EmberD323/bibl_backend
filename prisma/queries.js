@@ -51,7 +51,8 @@ async function findLists(userId) {
         include: {
             books:{
                 include:{
-                  book:true
+                  book:true,
+                  list:true
                 }
               }
         },
@@ -66,7 +67,8 @@ async function findList(listId) {
         include: {
             books:{
                 include:{
-                  book:true
+                  book:true,
+                  list:true
                 }
               }
         },
