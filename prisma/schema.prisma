@@ -25,7 +25,6 @@ model Book {
   title         String
   author_name   String
   imageURL      String
-  averageRating Int
   category      String
   description   String
   pageCount     Int
