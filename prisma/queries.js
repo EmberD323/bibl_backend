@@ -77,7 +77,6 @@ async function findList(listId) {
     return list
 }
 async function addBook(listId,title,name,imageURL,category,description,pageCount,publishDate) {
-    console.log(listId,title,name,imageURL,category,description,pageCount,publishDate);
     //check if book exists
     const book = await prisma.book.findMany({
         where: {
@@ -137,8 +136,6 @@ async function addBook(listId,title,name,imageURL,category,description,pageCount
     return 
 }
 async function addBookNoList(title,name,imageURL,category,description,pageCount,publishDate) {
-    console.log(title,name,imageURL,category,description,pageCount,publishDate);
-    console.log(typeof pageCount)
     //check if book exists
     const book = await prisma.book.findMany({
         where: {
