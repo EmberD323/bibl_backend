@@ -138,6 +138,7 @@ async function addBook(listId,title,name,imageURL,category,description,pageCount
 }
 async function addBookNoList(title,name,imageURL,category,description,pageCount,publishDate) {
     console.log(title,name,imageURL,category,description,pageCount,publishDate);
+    console.log(typeof pageCount)
     //check if book exists
     const book = await prisma.book.findMany({
         where: {
