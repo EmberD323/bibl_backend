@@ -8,6 +8,10 @@ async function main() {
   await prisma.rating.deleteMany({
     
   })  
+  const rating =await prisma.rating.findMany({
+      
+    })
+    console.log(rating)
   // await prisma.book.deleteMany({
     
   //   })
