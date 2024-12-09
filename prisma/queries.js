@@ -250,7 +250,7 @@ async function updateRating(userId,bookId,rating){
 }
 async function addRating(userId,bookId,rating){
     console.log(rating)
-    await prisma.rating.create({
+    const thisRating = await prisma.rating.createManyAndReturn({
         data:{
             rating,
             user:{
@@ -265,7 +265,7 @@ async function addRating(userId,bookId,rating){
             },
         }
     })
-    return
+    return thisRating
    
 }
 
