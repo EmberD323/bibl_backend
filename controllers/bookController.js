@@ -96,6 +96,21 @@ async function listDeleteBook (req, res) {
         }   
     })
 }
+async function deleteBookAllUserLists (req, res) {
+    jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
+        if(err){
+            res.sendStatus(403)
+        }else{
+            const bookId = Number(req.params.bookId);
+            const lists = await db.findLists(userid);
+            await Promise.all(lists.map(async (list) => {
+                await db.deleteBook(list.id,bookId);
+            }))
+            res.sendStatus(200)
+
+        }   
+    })
+}
 async function deleteList (req, res) {
   jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
       if(err){
@@ -126,7 +141,8 @@ module.exports = {
     listAddBook,
     listDeleteBook,
     deleteList,
-    addBook
+    addBook,
+    deleteBookAllUserLists
 
   
 };
