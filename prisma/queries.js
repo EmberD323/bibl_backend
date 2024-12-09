@@ -162,7 +162,7 @@ async function addBookNoList(title,name,imageURL,category,description,pageCount,
     return 
 }
 async function deleteBook(listId,bookId) {
-    await prisma.booksOnLists.delete({
+    const book = await prisma.booksOnLists.findUnique({
         where: {
             bookId_listId: {
                 listId,
@@ -170,6 +170,16 @@ async function deleteBook(listId,bookId) {
             },
         },
     });
+    if(book){
+        await prisma.booksOnLists.delete({
+            where: {
+                bookId_listId: {
+                    listId,
+                    bookId
+                },
+            },
+        });
+    }
 }
 async function deleteList(id) {
     await prisma.list.delete({
