@@ -136,14 +136,21 @@ async function rateBook (req, res) {
 
              //check if rating exists
             const ratingCheck = await db.findRating(userid,bookId);
+            console.log(ratingCheck)
             
             //if yes - update
             if(ratingCheck){
+                console.log("hi")
                 await db.updateRating(userid,bookId,rating);
+                res.sendStatus(200)
+
             }else{//if no - new
+                console.log("hey")
+
                 await db.addRating(userid,bookId,rating);
+                res.sendStatus(200)
+
             }
-            res.sendStatus(200)
 
         }   
     })
