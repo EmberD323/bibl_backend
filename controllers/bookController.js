@@ -162,7 +162,8 @@ module.exports = {
     listDeleteBook,
     deleteList,
     addBook,
-    deleteBookAllUserLists
+    deleteBookAllUserLists,
+    rateBook
 
   
 };
