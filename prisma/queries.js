@@ -225,13 +225,13 @@ async function deleteAllBooksFromList(listId) {
     });
 }
 async function findRating(userId,bookId){
-    const rating = await prisma.rating.findUnique({
+    const rating = await prisma.rating.findMany({
         where: {
           userId,
           bookId
         },
     })
-    return rating
+    return rating[0]
 }
 async function updateRating(userId,bookId,rating){
     await prisma.rating.update({
