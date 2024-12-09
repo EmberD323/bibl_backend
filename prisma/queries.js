@@ -253,6 +253,7 @@ async function addRating(userId,bookId,rating){
     const thisRating = await prisma.rating.createManyAndReturn({
         data:{
             rating,
+            userId,
             user:{
                 connect: {
                     id:userId
