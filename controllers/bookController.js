@@ -125,6 +125,25 @@ async function deleteList (req, res) {
       }   
   })
 }
+async function rateBook (req, res) {
+    jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
+        if(err){
+            res.sendStatus(403)
+        }else{
+            const userid = authData.user.id;
+            const bookId = Number(req.params.bookId);
+            const rating = Number(req.body.rating);
+             //check if rating exists
+            const ratingCheck = await db.findRating(userid,bookId);
+            //if yes - update
+            if(ratingCheck){
+                await db.updateRating(userid,bookId,rating);
+            }else{//if no - new
+                await db.addRating(userid,bookId,rating);
+            }
+        }   
+    })
+}
 // async function Name (req, res) {
 //   jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
 //       if(err){

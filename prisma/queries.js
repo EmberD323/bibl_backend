@@ -196,7 +196,35 @@ async function deleteAllBooksFromList(listId) {
         },
     });
 }
-
+async function findRating(userId,bookId){
+    const rating = await prisma.rating.findUnique({
+        where: {
+          userId,
+          bookId
+        },
+    })
+    return rating
+}
+async function updateRating(userId,bookId,rating){
+    await prisma.rating.update({
+        where: {
+          userId,
+          bookId
+        },
+        data:{
+            rating
+        }
+    })
+}
+async function addRating(userId,bookId,rating){
+    await prisma.rating.create({
+        data:{
+            rating,
+            userId,
+            bookId
+        }
+    })
+}
 
 module.exports = {
     findUserByUsername,
@@ -209,5 +237,8 @@ module.exports = {
     addBookNoList,
     deleteList,
     deleteAllBooksFromList,
-    deleteBook
+    deleteBook,
+    findRating,
+    updateRating,
+    addRating
 }

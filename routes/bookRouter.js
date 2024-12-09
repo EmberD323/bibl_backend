@@ -9,6 +9,7 @@ bookRouter.post("/",verifyToken, bookController.createList);
 bookRouter.get("/",verifyToken, bookController.getLists);
 bookRouter.post("/addBook",verifyToken, bookController.addBook);
 bookRouter.delete("/book/:bookId",verifyToken, bookController.deleteBookAllUserLists);
+bookRouter.post("/book/:bookId/rating",verifyToken, bookController.rateBook);
 bookRouter.get("/:listId",verifyToken, bookController.getList);
 bookRouter.delete("/:listId",verifyToken, bookController.deleteList);
 

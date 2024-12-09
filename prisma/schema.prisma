@@ -19,6 +19,7 @@ model User {
   username    String   @unique
   password    String
   lists       List[]
+  ratings     Rating[]
 }
 model Book {
   id            Int      @id @default(autoincrement())
@@ -30,6 +31,7 @@ model Book {
   pageCount     Int
   publishDate   String
   lists         BooksOnLists[]
+  ratings       Rating[]
 }
 
 model List {
@@ -47,4 +49,13 @@ model BooksOnLists {
   listId Int // relation scalar field (used in the `@relation` attribute above)
 
   @@id([bookId, listId])
+}
+
+model Rating {
+  id          Int      @id @default(autoincrement())
+  rating      Int
+  user        User   @relation(fields: [userId], references: [id])
+  userId      Int
+  book       Book     @relation(fields: [bookId], references: [id])
+  bookId     Int 
 }
