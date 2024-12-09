@@ -237,10 +237,8 @@ async function findRating(userId,bookId){
 async function updateRating(userId,bookId,rating){
     await prisma.rating.update({
         where: {
-          userId_bookId:{
             userId,
             bookId
-        },
         },
         data:{
             rating,
@@ -251,15 +249,14 @@ async function updateRating(userId,bookId,rating){
 }
 async function addRating(userId,bookId,rating){
     console.log(rating)
-    const thisRating = await prisma.rating.createManyAndReturn({
+    const thisRating = await prisma.rating.create({
         data:{
             rating,
             userId,
             bookId,
         }
     })
-    return thisRating
-   
+  
 }
 
 module.exports = {
