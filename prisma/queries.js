@@ -29,7 +29,15 @@ async function createUser(first_name,last_name,username,password) {
 async function findListByName(name,userId) {
     const list = await prisma.list.findMany({
         include: {
-            books:true
+            books:{
+                include:{
+                    book:{
+                        include:{
+                            ratings:true
+                        }
+                    }
+                }
+            }
         },
         where: {
           name,
@@ -67,7 +75,11 @@ async function findList(listId) {
         include: {
             books:{
                 include:{
-                  book:true,
+                  book:{
+                    include:{
+                        ratings:true
+                    }
+                  },
                   list:true
                 }
               }
