@@ -245,10 +245,10 @@ async function updateRating(userId,bookId,rating){
     })
 }
 async function addRating(userId,bookId,rating){
+    console.log(rating)
     await prisma.rating.create({
         data:{
             rating,
-            userId,
             user:{
                 connect: {
                     id:userId
