@@ -223,6 +223,7 @@ async function deleteAllBooksFromList(listId) {
             listId
         },
     });
+    return
 }
 async function findRating(userId,bookId){
     const rating = await prisma.rating.findMany({
@@ -245,6 +246,7 @@ async function updateRating(userId,bookId,rating){
             rating
         }
     })
+    return
 }
 async function addRating(userId,bookId,rating){
     console.log(rating)
@@ -263,6 +265,7 @@ async function addRating(userId,bookId,rating){
             },
         }
     })
+    return
    
 }
 

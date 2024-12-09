@@ -142,6 +142,7 @@ async function rateBook (req, res) {
             if(ratingCheck){
                 console.log("hi")
                 await db.updateRating(userid,bookId,rating);
+                console.log("hii")
                 res.sendStatus(200)
 
             }else{//if no - new
