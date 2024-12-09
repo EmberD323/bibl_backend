@@ -255,6 +255,7 @@ async function addRating(userId,bookId,rating){
         data:{
             rating,
             userId,
+            bookId,
             user:{
                 connect: {
                     id:userId
