@@ -33,7 +33,11 @@ async function findListByName(name,userId) {
                 include:{
                     book:{
                         include:{
-                            ratings:true
+                            ratings:{
+                                where:{
+                                    userId
+                                }
+                            }
                         }
                     }
                 }
@@ -61,7 +65,11 @@ async function findLists(userId) {
                 include:{
                   book:{
                     include:{
-                        ratings:true
+                        ratings:{
+                            where:{
+                                userId
+                            }
+                        }
                     }
                   },
                   list:true
@@ -81,7 +89,11 @@ async function findList(listId) {
                 include:{
                   book:{
                     include:{
-                        ratings:true
+                        ratings:{
+                            where:{
+                                userId
+                            }
+                        }
                     }
                   },
                   list:true
