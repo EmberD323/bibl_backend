@@ -59,7 +59,11 @@ async function findLists(userId) {
         include: {
             books:{
                 include:{
-                  book:true,
+                  book:{
+                    include:{
+                        ratings:true
+                    }
+                  },
                   list:true
                 }
               }
