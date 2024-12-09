@@ -236,8 +236,10 @@ async function findRating(userId,bookId){
 async function updateRating(userId,bookId,rating){
     await prisma.rating.update({
         where: {
-          userId,
-          bookId
+          userId_bookId:{
+            userId,
+            bookId
+        },
         },
         data:{
             rating
