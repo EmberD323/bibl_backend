@@ -256,16 +256,6 @@ async function addRating(userId,bookId,rating){
             rating,
             userId,
             bookId,
-            user:{
-                connect: {
-                    id:userId
-                }
-            },
-            book:{
-                connect: {
-                    id:bookId
-                }
-            },
         }
     })
     return thisRating
