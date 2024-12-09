@@ -101,6 +101,7 @@ async function deleteBookAllUserLists (req, res) {
         if(err){
             res.sendStatus(403)
         }else{
+            const userid = authData.user.id;
             const bookId = Number(req.params.bookId);
             const lists = await db.findLists(userid);
             await Promise.all(lists.map(async (list) => {
