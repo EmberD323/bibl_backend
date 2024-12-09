@@ -146,10 +146,7 @@ async function rateBook (req, res) {
                 res.sendStatus(200)
 
             }else{//if no - new
-                console.log("hey")
-
                 let thisRating = await db.addRating(userid,bookId,rating);
-                console.log(thisRating)
                 res.sendStatus(200)
 
             }

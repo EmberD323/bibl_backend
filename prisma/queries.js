@@ -244,7 +244,7 @@ async function updateRating(userId,bookId,rating){
         },
         data:{
             rating,
-            assignedAt:now()
+            assignedAt: new Date ()
         }
     })
     return
