@@ -9,6 +9,9 @@ async function main() {
     
   // })  
   const rating =await prisma.rating.findMany({
+    include:{
+      book:true
+    }
       
     })
     console.log(rating)

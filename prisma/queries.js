@@ -65,11 +65,8 @@ async function findLists(userId) {
                 include:{
                   book:{
                     include:{
-                        ratings:{
-                            where:{
-                                userId
-                            }
-                        }
+                        ratings:true
+                        
                     }
                   },
                   list:true
