@@ -133,6 +133,8 @@ async function rateBook (req, res) {
             const userid = authData.user.id;
             const bookId = Number(req.params.bookId);
             const rating = Number(req.body.rating);
+            console.log(userid,bookId,rating)
+
              //check if rating exists
             const ratingCheck = await db.findRating(userid,bookId);
             //if yes - update
