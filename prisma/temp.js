@@ -5,9 +5,9 @@ const prisma = new PrismaClient()
 async function main() {
 
    
-  await prisma.rating.deleteMany({
+  // await prisma.rating.deleteMany({
     
-  })  
+  // })  
   const rating =await prisma.rating.findMany({
       
     })
