@@ -106,6 +106,23 @@ async function findList(listId) {
     })
     return list
 }
+async function findBooksNotOnUsersLists(userId) {
+    const books = await prisma.book.findMany({
+        include: {
+            lists:{
+                include:{
+                    userId
+                }
+            }
+        },
+        // where: {
+        //   id:listId
+        // },
+    })
+    console.log(books)
+    return 
+}
+
 async function addBook(listId,title,name,imageURL,category,description,pageCount,publishDate) {
     //check if book exists
     const book = await prisma.book.findMany({
