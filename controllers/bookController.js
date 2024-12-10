@@ -1,12 +1,14 @@
 const db = require("../prisma/queries.js");
 const { body, validationResult } = require("express-validator");
+const tools = require("./modules/tools.js");
+
 const jwt = require("jsonwebtoken");
 
 const validateList= [
     body("name").trim()
       .isLength({ min: 1, max: 25 }).withMessage(`Last name must be between 1 and 25 characters.`)
       .custom(async value => {
-        const list = await db.findListByName(value);
+        const list = await db.findListByName(tools.capitalize(value));
         if (list) {
           throw new Error('List name is already in use');
         }
@@ -26,12 +28,12 @@ createList =[
                     return res.status(400).json(errors.array())
                 }
                 let {name} = req.body;
-                const list = await db.findListByName(name,userid);
+                const list = await db.findListByName(tools.capitalize(name),userid);
                 if (list) {
                     errors = [{msg:"List name is already in use"}]
                     return res.status(400).json(errors)
                 }
-                await db.createList(name,userid);
+                await db.createList(tools.capitalize(name),userid);
                 res.sendStatus(200)
             }
         })
