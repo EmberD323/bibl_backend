@@ -56,8 +56,6 @@ async function getBooks (req, res) {
             console.log("hi")
             const books = await db.findBooks();
             console.log("hi2")
-
-            console.log(books)
             res.json(books);
         }   
     })

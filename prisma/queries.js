@@ -120,7 +120,6 @@ async function findBooks() {
 
     })
     console.log("hi4")
-    console.log(books)
 
     return books
 }
