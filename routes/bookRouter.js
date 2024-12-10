@@ -7,7 +7,7 @@ const verifyToken = require("../middleware/verifyToken");
 
 bookRouter.post("/",verifyToken, bookController.createList);
 bookRouter.get("/",verifyToken, bookController.getLists);
-bookRouter.get("/booksNotOnLists",verifyToken, bookController.getBooks);
+bookRouter.get("/books",verifyToken, bookController.getBooks);
 bookRouter.post("/addBook",verifyToken, bookController.addBook);
 bookRouter.delete("/book/:bookId",verifyToken, bookController.deleteBookAllUserLists);
 bookRouter.post("/book/:bookId/rating",verifyToken, bookController.rateBook);
