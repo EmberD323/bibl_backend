@@ -115,11 +115,11 @@ async function findBooksNotOnUsersLists(userId) {
                 }
             }
         },
-        // where: {
-        //   id:listId
-        // },
+        where: {
+          
+        },
     })
-    console.log(books)
+    console.log(books.lists)
     return 
 }
 
