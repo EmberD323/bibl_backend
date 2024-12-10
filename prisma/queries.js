@@ -107,6 +107,8 @@ async function findList(listId) {
     return list
 }
 async function findBooks() {
+    console.log("hi3")
+
     const books = await prisma.book.findMany({
         include: {
             lists:{
@@ -117,6 +119,9 @@ async function findBooks() {
         },
 
     })
+    console.log("hi4")
+    console.log(books)
+
     return books
 }
 
