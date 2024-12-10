@@ -111,7 +111,7 @@ async function findBooksNotOnUsersLists(userId) {
         include: {
             lists:{
                 include:{
-                    userId
+                    list:true
                 }
             }
         },
