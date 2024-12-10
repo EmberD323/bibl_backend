@@ -48,6 +48,17 @@ async function getLists (req, res) {
       }   
   })
 }
+async function getBooksNotOnLists (req, res) {
+    jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
+        if(err){
+            res.sendStatus(403)
+        }else{
+            const userid = authData.user.id
+            const books = await db.findBooksNotOnUsersLists(userid);
+            res.json(books);
+        }   
+    })
+  }
 
 async function getList (req, res) {
     jwt.verify(req.token,process.env.SECRET,async (err,authData)=>{
@@ -173,7 +184,8 @@ module.exports = {
     deleteList,
     addBook,
     deleteBookAllUserLists,
-    rateBook
+    rateBook,
+    getBooksNotOnLists
 
   
 };
