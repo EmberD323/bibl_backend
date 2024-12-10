@@ -53,7 +53,7 @@ async function getBooks (req, res) {
         if(err){
             res.sendStatus(403)
         }else{
-            const books = await db.findBooksNotOnUsersLists();
+            const books = await db.findBooks();
             res.json(books);
         }   
     })
