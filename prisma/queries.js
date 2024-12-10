@@ -106,7 +106,7 @@ async function findList(listId) {
     })
     return list
 }
-async function findBooksNotOnUsersLists(userId) {
+async function findBooks() {
     const books = await prisma.book.findMany({
         include: {
             lists:{
@@ -115,12 +115,9 @@ async function findBooksNotOnUsersLists(userId) {
                 }
             }
         },
-        where: {
-          
-        },
+
     })
-    console.log(books.lists)
-    return 
+    return books
 }
 
 async function addBook(listId,title,name,imageURL,category,description,pageCount,publishDate) {
@@ -293,5 +290,5 @@ module.exports = {
     findRating,
     updateRating,
     addRating,
-    findBooksNotOnUsersLists
+    findBooks
 }
