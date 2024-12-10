@@ -292,5 +292,6 @@ module.exports = {
     deleteBook,
     findRating,
     updateRating,
-    addRating
+    addRating,
+    findBooksNotOnUsersLists
 }
