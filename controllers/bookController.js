@@ -54,6 +54,7 @@ async function getBooks (req, res) {
             res.sendStatus(403)
         }else{
             const books = await db.findBooks();
+            console.log(books)
             res.json(books);
         }   
     })
