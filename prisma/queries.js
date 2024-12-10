@@ -106,20 +106,22 @@ async function findList(listId) {
     })
     return list
 }
-async function findBooks() {
-    console.log("hi3")
+async function findBooks(user) {
 
     const books = await prisma.book.findMany({
         include: {
             lists:{
                 include:{
-                    list:true
+                    list:{
+                        include:{
+                            user:true
+                        }
+                    }
                 }
             }
         },
-
     })
-    console.log("hi4")
+    
 
     return books
 }
