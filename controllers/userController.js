@@ -80,6 +80,7 @@ logIn = [
       else{
         jwt.sign({user},process.env.SECRET,(err,token)=>{
           //return token and user info
+          console.log(user,token)
           res.json({
               token,user
           });
