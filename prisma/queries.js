@@ -164,7 +164,6 @@ async function addBook(listId,title,name,imageURL,category,description,pageCount
 
     })
     if(checkIfOnList){
-        console.log("already on list")
         return
     }
     //add book to list
@@ -270,7 +269,6 @@ async function updateRating(userId,bookId,rating){
     return
 }
 async function addRating(userId,bookId,rating){
-    console.log(rating)
     const thisRating = await prisma.rating.create({
         data:{
             rating,

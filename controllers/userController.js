@@ -78,7 +78,7 @@ logIn = [
         
       }
       else{
-        jwt.sign({user},process.env.SECRET,{expiresIn:"10s"},(err,token)=>{
+        jwt.sign({user},process.env.SECRET,(err,token)=>{
           //return token and user info
           res.json({
               token,user
