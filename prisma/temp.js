@@ -8,18 +8,28 @@ async function main() {
   // await prisma.rating.deleteMany({
     
   // })  
-  const books =await prisma.user.findMany({
-    include:{
-      lists:{
-        include:{
-          books:true
-        }
-      }
-    }
+  // await prisma.book.delete({
+  //   where:{
+  //     id:21
+  //   }
+  // })
+  // const books =await prisma.user.findMany({
+  //   include:{
+  //     lists:{
+  //       include:{
+  //         books:true
+  //       }
+  //     }
+  //   }
       
-    })
-    console.log(books[1].lists[0].books)
-  // await prisma.book.deleteMany({
+  //   })
+  //   console.log(books)
+
+  //   console.log(books[1].lists[0].books)
+  // await prisma.user.delete({
+  //   where:{
+  //     id:7
+  //   }
     
   //   })
     //  const lists =await prisma.list.findMany({

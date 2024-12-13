@@ -18,7 +18,6 @@ bookRouter.put("/:listId/addBook",verifyToken, bookController.listAddBook);
 bookRouter.put("/:listId/deleteBook/:bookId",verifyToken, bookController.listDeleteBook);
 
 
-
 // bookRouter.get("/received",verifyToken, bookController.receivedbooksGet);
 
 // bookRouter.post("/",verifyToken, bookController.newbookCreate);

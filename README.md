@@ -1,15 +1,21 @@
-# Node & Express Template
-npm install: @prisma/client @quixo3/prisma-session-store bcryptjs body-parser cors dotenv
-ejs express express-session express-validator jsonwebtoken passport passport-jwt passport-local pg
-supertest --save-dev
+# bibl-backend
 
-run app
-1)create .env with database url
-2) npx prisma migrate dev --name init
-3) node --watch app.js
+This is the backend for a book tracking website.
 
-psql
-CREATE DATABASE name;
-\l
-\c dbname
+# Deployed
+- https://biblemberd232.netlify.app/
+# Github
+- Frontend:https://github.com/EmberD323/bibl_frontend
 
+## Features
+- User authentication
+- CRUD operations
+- Google Books API use
+
+## Tech Stack
+
+- **Framework**:  Node.js with Express
+- **Database**: PostgreSQL with Prisma ORM, stored on railway.
+- **Authentication**: JWT
+- **Validation**: express validation
+- **Password Hashing**: bcryptjs
