@@ -3,8 +3,13 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-
-   
+  await prisma.user.create({
+    data: {
+        first_name:"TEST",
+        last_name:"TEST",
+        username:"TEST@test.com",
+        password:"hashedPassword",
+    }})
   // await prisma.rating.deleteMany({
     
   // })  

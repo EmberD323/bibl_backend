@@ -12,13 +12,13 @@ const validateSignUp= [
         .isAlpha().withMessage(`Last name can only be letters`)
         .isLength({ min: 1, max: 15 }).withMessage(`Last name must be between 1 and 15 characters.`),
     body("username")
-        .isEmail().withMessage(`Username must be a valid email`),
-    //     .custom(async value => {
-    //   const user = await db.findUserByUsername(value);
-    //   if (user) {
-    //     throw new Error('E-mail already in use');
-    //   }
-    // }),
+        .isEmail().withMessage(`Username must be a valid email`)
+        .custom(async value => {
+      const user = await db.findUserByUsername(value);
+      if (user) {
+        throw new Error('E-mail already in use');
+      }
+    }),
     body("password")
       .isLength({ min: 8}).withMessage(`Password must be between more than 8 characters.`)
       .matches(/\d/).withMessage('Password must contain a number'),
