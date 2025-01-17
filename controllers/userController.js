@@ -41,6 +41,7 @@ newUserCreate = [
     validateSignUp,
     async function(req, res) {
         let {first_name,last_name,username,password,passwordConfirm} = req.body
+        console.log(first_name)
         bcrypt.hash(password, 10, async (err, hashedPassword) => {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
