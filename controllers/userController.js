@@ -41,15 +41,21 @@ newUserCreate = [
     validateSignUp,
     async function(req, res) {
         let {first_name,last_name,username,password,passwordConfirm} = req.body
-        console.log(first_name)
+        console.log(first_name,last_name,username,password,passwordConfirm)
         bcrypt.hash(password, 10, async (err, hashedPassword) => {
             const errors = validationResult(req);
+            console.log(hashedPassword)
+
+            console.log(errors)
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),                    
                 });
             }
+            console.log("hi")
             await db.createUser(tools.capitalize(first_name),tools.capitalize(last_name),username,hashedPassword);
+            console.log("hi2")
+
             res.sendStatus(200);
             //create base lists
             const user = await db.findUserByUsername(username);
